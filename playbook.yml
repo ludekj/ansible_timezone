@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: True
+  tasks:
+    - name: Set timezone to Europe/Prague
+      community.general.timezone:
+        name: Europe/Prague
+      become: yes
+      when: ansible_date_time['tz'] != "CET"
